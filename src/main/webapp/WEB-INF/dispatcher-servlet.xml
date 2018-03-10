@@ -47,8 +47,16 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 
+    <bean id="corepeatDAO" class="corepeat.dao.CorepeatDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+
     <bean id="userService" class="corepeat.service.UserServiceImpl">
         <property name="userDAO" ref="userDAO"></property>
+    </bean>
+
+    <bean id="corepeatService" class="corepeat.service.CorepeatServiceImpl">
+        <property name="corepeatDAO" ref="corepeatDAO"></property>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>

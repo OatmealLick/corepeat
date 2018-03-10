@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public CorepeatUser getUser(Integer userID) {
-        return this.userDAO.getUser(userID);
+    public CorepeatUser getUser(Integer userId) {
+        return this.userDAO.getUserById(userId);
     }
 
 

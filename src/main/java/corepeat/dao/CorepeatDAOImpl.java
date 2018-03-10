@@ -1,13 +1,12 @@
 package corepeat.dao;
 
+import corepeat.model.Corepeat;
 import corepeat.model.CorepeatUser;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class UserDAOImpl implements UserDAO {
+public class CorepeatDAOImpl implements CorepeatDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -17,15 +16,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void addUser(CorepeatUser corepeatUser) {
+    public void addCorepeat(Corepeat corepeat) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(corepeatUser);
+        session.persist(corepeat);
     }
 
     @Override
-    public CorepeatUser getUserById(Integer userId) {
+    public Corepeat getCorepeatById(Integer corepeatId) {
         Session session = this.sessionFactory.getCurrentSession();
-        CorepeatUser user = session.get(CorepeatUser.class, userId);
-        return user;
+        Corepeat corepeat = session.get(Corepeat.class, corepeatId);
+        return corepeat;
     }
 }

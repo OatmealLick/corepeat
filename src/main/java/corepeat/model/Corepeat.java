@@ -25,11 +25,11 @@ public class Corepeat {
     private Integer currentMentors;
 
     @ManyToMany(mappedBy = "user")
-    private Set<User> participants = new HashSet<>();
+    private Set<CorepeatUser> participants = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name="USER_ID", nullable=false)
-    private User mentor;
+    private CorepeatUser mentor;
 
     @Column(name = "COREPEAT_ID")
     public Integer getCorepeatId() {
@@ -113,20 +113,20 @@ public class Corepeat {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "corepeat")
-    public Set<User> getParticipants() {
+    public Set<CorepeatUser> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(Set<User> participants) {
+    public void setParticipants(Set<CorepeatUser> participants) {
         this.participants = participants;
     }
 
     @Column(name = "MENTOR")
-    public User getMentor() {
+    public CorepeatUser getMentor() {
         return mentor;
     }
 
-    public void setMentor(User mentor) {
+    public void setMentor(CorepeatUser mentor) {
         this.mentor = mentor;
     }
 }
