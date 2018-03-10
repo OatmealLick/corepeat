@@ -19,4 +19,8 @@ export class CorepeatService {
   createCorepeat(corepeat: Corepeat) {
     this.http.post(`${this.configuration.getUrl()}/${this.corepeatsPath}`, corepeat);
   }
+
+  getNearbyCorepeats(): Observable<Corepeat[]> {
+    return this.http.get<Corepeat[]>(`${this.configuration.getUrl()}/${this.corepeatsPath}`);
+  }
 }

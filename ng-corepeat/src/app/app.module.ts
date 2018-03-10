@@ -12,12 +12,12 @@ import {CorepeatService} from "./corepeat/corepeat.service";
 import {ConfigurationService} from "./configuration.service";
 import {HttpClientInMemoryWebApiModule, InMemoryDbService} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
-import { ContentHeaderComponent } from './content-header/content-header.component';
-import { NearbyCorepeatComponent } from './nearby-corepeat/nearby-corepeat.component';
-import { NearbyCorepeatsComponent } from './nearby-corepeats/nearby-corepeats.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { NearbyCorepeatsComponent } from './views/nearby-corepeats/nearby-corepeats.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { CorepeatListComponent } from './corepeat/corepeat-list/corepeat-list.component';
 import {AuthService} from "./auth.service";
+import { ContactComponent } from './views/contact/contact.component';
+import { CorepeatSummaryComponent } from './corepeat/corepeat-summary/corepeat-summary.component';
 
 
 @NgModule({
@@ -25,10 +25,11 @@ import {AuthService} from "./auth.service";
     AppComponent,
     UserDetailedComponent,
     CorepeatDetailedComponent,
-    NearbyCorepeatsComponent
-    CorepeatDetailedComponent,
+    NearbyCorepeatsComponent,
     DashboardComponent,
-    CorepeatListComponent
+    CorepeatListComponent,
+    ContactComponent,
+    CorepeatSummaryComponent
   ],
   imports: [
     BrowserModule,

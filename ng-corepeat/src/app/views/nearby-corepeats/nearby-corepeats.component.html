@@ -1,2 +1,6 @@
 <h1 class="page-header">Corepeaty w Twojej okolicy</h1>
-
+<ul class="corepeat-list">
+  <li *ngFor="let corepeat of nearbyCorepeats">
+    <app-corepeat-summary [corepeat]="corepeat"></app-corepeat-summary>
+  </li>
+</ul>
