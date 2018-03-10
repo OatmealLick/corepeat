@@ -1,1 +1,1 @@
-Kuba nigdy Cie nie lubilem, pozdrawiam
+To run: ./gradlew appRun
