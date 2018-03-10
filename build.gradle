@@ -1,9 +1,18 @@
-group 'corepeat'
-version '1.0-SNAPSHOT'
+plugins {
+    id "org.akhikhl.gretty" version "2.0.0"
+}
+
+gretty {
+    httpPort = 8080
+    contextPath = ''
+}
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'war'
+
+group 'corepeat'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
