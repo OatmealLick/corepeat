@@ -1,8 +1,9 @@
 package corepeat.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import corepeat.model.Corepeat;
 import corepeat.service.CorepeatService;
-import corepeat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,14 @@ public class CorepeatController {
         this.corepeatService = corepeatService;
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String getUser(@PathVariable String id) {
+    public String getCorepeatById(@PathVariable String id) {
         Corepeat corepeat = corepeatService.getCorepeatById(new Integer(id));
-        return null;
+        try {
+            return new ObjectMapper().writeValueAsString(corepeat);
+        } catch (JsonProcessingException e) {
+            return "redirect:error";
+        }
     }
 }
