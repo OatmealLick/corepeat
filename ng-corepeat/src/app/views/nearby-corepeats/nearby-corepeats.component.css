@@ -1,3 +1,14 @@
-.page-header {
-  margin: 32px 0 25px 110px;
+ul {
+  list-style-type: none;
+  margin: 50px 25px 0 40px;
+  padding: 0;
+}
+
+ul li {
+  display: block;
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #6e9aa1;
+  color: #fff;
+  border-radius: 6px;
 }

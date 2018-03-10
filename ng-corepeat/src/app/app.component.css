@@ -5,7 +5,7 @@
 }
 
 #sidebar.sidebarActive {
-  margin-left: -350px;
+  margin-left: -370px;
 }
 
 body {
@@ -21,12 +21,12 @@ a, a:hover, a:focus {
 
 #sidebar {
   position: relative;
-  min-width: 350px;
-  max-width: 350px;
+  min-width: 370px;
+  max-width: 370px;
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: #7386D5;
+  background: #57b17e;
   color: #fff;
   transition: all 0.3s;
 }
@@ -34,7 +34,7 @@ a, a:hover, a:focus {
 #sidebarCollapse {
   position: absolute;
   top: 25px;
-  left: 375px;
+  left: 395px;
   width: 60px;
   height: 60px;
   border: none;
@@ -97,6 +97,10 @@ a, a:hover, a:focus {
 
 .navigation-links li:hover {
   background-color: #879aec
+}
+
+.navigation-links li .nav-icon {
+  margin-right: 20px;
 }
 
 .navigation-links li a {

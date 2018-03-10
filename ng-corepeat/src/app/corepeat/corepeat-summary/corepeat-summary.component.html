@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <h2>{{corepeat.name}}</h2>
+  <span class="where-and-when">{{corepeat.city}}, {{corepeat.date | date:'dd.MM.yyyy'}}</span>
+  <p class="description">{{corepeat.description | slice:0:50}}...</p>
+  <span class="participants-count">Uczestnicy: {{corepeat.currentParticipants}}/{{corepeat.maxParticipants}}</span>
+</div>

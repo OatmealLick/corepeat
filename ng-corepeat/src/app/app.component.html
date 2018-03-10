@@ -9,9 +9,15 @@
     </div>
 
     <ul class="navigation-links">
-      <li><a routerLink="/corepeats">Przeglądaj Corepeaty</a></li>
-      <li><a routerLink="/dashboard">Panel użytkownika</a></li>
-      <li><a routerLink="/contact">Kontakt</a></li>
+      <li>
+        <a routerLink="/corepeats"><i class="nav-icon fa fa-search" aria-hidden="true"></i>Przeglądaj Corepeaty</a>
+      </li>
+      <li>
+        <a routerLink="/dashboard"><i class="nav-icon fa fa-user-circle-o" aria-hidden="true"></i>Panel użytkownika</a>
+      </li>
+      <li>
+        <a routerLink="/contact"><i class="nav-icon fa fa-envelope-o" aria-hidden="true"></i>Kontakt</a>
+      </li>
     </ul>
 
     <button type="button"
@@ -30,6 +36,3 @@
   </div>
 
 </div>
-
-<app-corepeat-list [timeSelector]="timeSelectorEnum.BEFORE_CURRENT"></app-corepeat-list>
-<app-corepeat-list [timeSelector]="timeSelectorEnum.AFTER_CURRENT"></app-corepeat-list>
