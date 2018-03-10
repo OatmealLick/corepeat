@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {UserDetailedComponent} from "./user-detailed/user-detailed.component";
 import {HttpClient} from "@angular/common/http";
 import {ConfigurationService} from "../configuration.service";
+import {User} from "./user";
 
 @Injectable()
 export class UserService {
@@ -13,8 +14,8 @@ export class UserService {
               private configuration: ConfigurationService) {
   }
 
-  getUser(id: number): Observable<UserDetailedComponent> {
-    const url = this.configuration.getUrl() + this.userPath + `${id}`
-    return this.http.get<UserDetailedComponent>(url);
+  getUser(id: number): Observable<User> {
+    const url = this.configuration.getUrl() + this.userPath + `${id}`;
+    return this.http.get<User>(url);
   }
 }
