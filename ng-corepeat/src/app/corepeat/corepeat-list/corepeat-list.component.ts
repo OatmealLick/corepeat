@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Corepeat} from "../corepeat";
 import {AuthService} from "../../auth.service";
 import {UserService} from "../../user/user.service";
@@ -15,7 +15,8 @@ export class CorepeatListComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private userService: UserService,
-              private corepeatService: CorepeatService) { }
+              private corepeatService: CorepeatService) {
+  }
 
   ngOnInit() {
   }
