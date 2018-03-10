@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {UserDetailedComponent} from "./user/user-detailed/user-detailed.component";
 import {CorepeatDetailedComponent} from "./corepeat/corepeat-detailed/corepeat-detailed.component";
+import {NearbyCorepeatsComponent} from "./nearby-corepeats/nearby-corepeats.component";
 
 const routes: Routes = [
   {path: 'users/:id', component: UserDetailedComponent},
-  {path: 'corepeats/:id', component: CorepeatDetailedComponent}
+  {path: 'corepeats/:id', component: CorepeatDetailedComponent},
+  {path: 'corepeats', component: NearbyCorepeatsComponent}
 ];
 
 @NgModule({

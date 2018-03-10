@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestComponent } from './test.component';
+import { NearbyCorepeatsComponent } from './nearby-corepeats.component';
 
-describe('TestComponent', () => {
-  let component: TestComponent;
-  let fixture: ComponentFixture<TestComponent>;
+describe('NearbyCorepeatsComponent', () => {
+  let component: NearbyCorepeatsComponent;
+  let fixture: ComponentFixture<NearbyCorepeatsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestComponent ]
+      declarations: [ NearbyCorepeatsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestComponent);
+    fixture = TestBed.createComponent(NearbyCorepeatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

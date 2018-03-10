@@ -16,4 +16,7 @@ export class CorepeatService {
     return this.http.get<Corepeat>(`${this.configuration.getUrl()}/${this.corepeatsPath}/${id}`);
   }
 
+  createCorepeat(corepeat: Corepeat) {
+    this.http.post(`${this.configuration.getUrl()}/${this.corepeatsPath}`, corepeat);
+  }
 }
