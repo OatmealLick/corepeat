@@ -1,0 +1,11 @@
+<div>
+  <h1>{{corepeat.name}}</h1>
+  <p>{{corepeat.description}}</p>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let participant of corepeat.participants">
+      {{participant.name}} {{participant.surname}}
+    </li>
+  </ul>
+</div>

@@ -6,8 +6,9 @@ import {AppComponent} from './app.component';
 import {TestComponent} from './test/test.component';
 import {TestService} from "./test.service";
 import {MessageComponent} from './message/message.component';
-import { DumbComponent } from './dumb/dumb.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CorepeatDetailedComponent } from './corepeat/corepeat-detailed/corepeat-detailed.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -15,11 +16,12 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     TestComponent,
     MessageComponent,
-    DumbComponent
+    CorepeatDetailedComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
