@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,5 +96,18 @@ public class UserServiceImpl implements UserService {
         return "1";
     }
 
-
+    @Override
+    @Transactional
+    public Integer addUserFromJSON(String userBody) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new Hibernate5Module());
+        try {
+            CorepeatUser corepeatUser = mapper.readValue(userBody, CorepeatUser.class);
+            this.userDAO.addUser(corepeatUser);
+            return corepeatUser.getUserId();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

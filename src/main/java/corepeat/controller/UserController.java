@@ -1,15 +1,17 @@
 package corepeat.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import corepeat.model.CorepeatUser;
 import corepeat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -22,10 +24,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/users/add", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/users", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public String test(HttpServletRequest request) {
-        return "Person added, it's totally okay :)";
+    public void addUser(@RequestBody String userBody, HttpServletResponse response) {
+
+        this.userService.addUserFromJSON(userBody);
+        response.setStatus(200);
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
