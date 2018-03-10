@@ -80,4 +80,13 @@ public class UserServiceImpl implements UserService {
         return "1";
     }
 
+    @Override
+    @Transactional
+    public String deleteUserFromCorepeat(Integer id, Integer corepeatId) {
+        CorepeatUser corepeatUser = this.userDAO.getUserById(id);
+        corepeatUser.getCorepeats().remove(this.corepeatDAO.getCorepeatById(corepeatId));
+        return "1";
+    }
+
+
 }

@@ -12,4 +12,5 @@ public interface UserService {
     String getUserJSON(Integer userId);
     String getCorepeatsWithUserOfId(Integer userId);
     String addUserToCorepeat(Integer id, Integer corepeatId);
+    String deleteUserFromCorepeat(Integer id, Integer corepeatId);
 }
