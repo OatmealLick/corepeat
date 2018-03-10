@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import corepeat.dao.CorepeatDAO;
+import corepeat.dao.UserDAO;
 import corepeat.model.Corepeat;
 import corepeat.model.CorepeatUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.io.IOException;
 public class CorepeatServiceImpl implements CorepeatService {
 
     private CorepeatDAO corepeatDAO;
+    private UserDAO userDAO;
 
     @Autowired
     @Qualifier("corepeatDAO")
@@ -49,14 +51,16 @@ public class CorepeatServiceImpl implements CorepeatService {
 
     @Override
     @Transactional
-    public void addCorepeatFromJSON(String corepeatBody) {
+    public Integer addCorepeatFromJSON(String corepeatBody) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new Hibernate5Module());
         try {
             Corepeat corepeat = mapper.readValue(corepeatBody, Corepeat.class);
             this.corepeatDAO.addCorepeat(corepeat);
+            return corepeat.getCorepeatId();
         } catch (IOException e) {
             e.printStackTrace();
+            return 0;
         }
     }
 
