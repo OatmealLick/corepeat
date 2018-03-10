@@ -38,4 +38,16 @@ public class UserController {
         return userService.getUserJSON(new Integer(id));
     }
 
+    @RequestMapping(value = "/users/{id}/corepeats", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public String getCorepeatsWithUserOfId(@PathVariable String id) {
+        return userService.getCorepeatsWithUserOfId(new Integer(id));
+    }
+
+    @RequestMapping(value = "/users/{id}/corepeats/{corepeatId}", method = RequestMethod.PUT, produces = "application/json")
+    @ResponseBody
+    public String addUserToCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
+        return userService.addUserToCorepeat(new Integer(id), new Integer (corepeatId));
+    }
+
 }
