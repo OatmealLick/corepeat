@@ -1,0 +1,13 @@
+<div *ngIf="corepeat">
+  <div class="corepeat-info">
+    <h1>{{corepeat.name}}</h1>
+    <p>{{corepeat.description}}</p>
+  </div>
+  <div class="corepeat-users">
+    <ul>
+      <li *ngFor="let participant of corepeat.participants">
+        {{participant.name}} {{participant.surname}}
+      </li>
+    </ul>
+  </div>
+</div>
