@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TimeSelector} from "./corepeat/corepeat-list/time-selector";
 
 @Component({
   selector: 'app-root',

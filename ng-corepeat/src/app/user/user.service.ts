@@ -34,8 +34,9 @@ export class UserService {
     this.http.put(url, null);
   }
 
-  getCorepeatsOfUser(userId: number) {
-    const url = `${this.configuration.getUrl()}/${this.userPath}/${userId}`;
+  getCorepeatsOfUser(userId: number): Observable<Corepeat[]> {
+    // const url = `${this.configuration.getUrl()}/${this.userPath}/${userId}/corepeats`;
+    const url = 'api/corepeats';
     return this.http.get<Corepeat[]>(url);
   }
 }

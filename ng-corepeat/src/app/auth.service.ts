@@ -5,7 +5,7 @@ export class AuthService {
 
   constructor() { }
 
-  getLoggedUser(): number {
+  getLoggedUserId(): number {
     return 1;
   }
 }
