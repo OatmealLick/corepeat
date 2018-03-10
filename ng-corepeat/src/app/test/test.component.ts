@@ -9,7 +9,7 @@ import {MessageComponent} from "../message/message.component";
 })
 export class TestComponent implements OnInit {
 
-  message: MessageComponent = new MessageComponent();
+  message: MessageComponent;
 
   constructor(private testService: TestService) {
   }
