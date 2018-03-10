@@ -2,6 +2,7 @@ package corepeat.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import corepeat.dao.UserDAO;
 import corepeat.model.CorepeatUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String getUserJSON(Integer userId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
-        System.out.println(corepeatUser.getName());
         try {
-            return new ObjectMapper().writeValueAsString(corepeatUser);
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new Hibernate5Module());
+            return mapper.writeValueAsString(corepeatUser);
         } catch (JsonProcessingException e) {
             return "redirect:error";
         }
