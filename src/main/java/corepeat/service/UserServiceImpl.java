@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String getUserJSON(Integer userId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
+        System.out.println(corepeatUser.getName());
         try {
             return new ObjectMapper().writeValueAsString(corepeatUser);
         } catch (JsonProcessingException e) {

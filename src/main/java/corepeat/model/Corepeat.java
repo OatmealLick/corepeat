@@ -43,7 +43,7 @@ public class Corepeat {
     private Set<CorepeatUser> participants = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "MENTOR_ID")
     private CorepeatUser mentor;
 
     public Integer getCorepeatId() {
