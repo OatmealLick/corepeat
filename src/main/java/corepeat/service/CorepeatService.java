@@ -8,4 +8,5 @@ public interface CorepeatService {
     Corepeat getCorepeatById(Integer id);
     String getCorepeatJSON(Integer id);
     Integer addCorepeatFromJSON(String corepeatBody);
+    String getCorepeatsJSON();
 }
