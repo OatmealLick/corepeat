@@ -76,7 +76,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String addUserToCorepeat(Integer id, Integer corepeatId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(id);
-        corepeatUser.getCorepeats().add(this.corepeatDAO.getCorepeatById(corepeatId));
+        Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
+        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants()+1);
+        corepeatUser.getCorepeats().add(corepeat);
+        corepeat.getParticipants().add(corepeatUser);
         return "1";
     }
 
@@ -84,7 +87,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String deleteUserFromCorepeat(Integer id, Integer corepeatId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(id);
-        corepeatUser.getCorepeats().remove(this.corepeatDAO.getCorepeatById(corepeatId));
+        Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
+        corepeatUser.getCorepeats().remove(corepeat);
+        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants()-1);
+        corepeat.getParticipants().remove(corepeatUser);
         return "1";
     }
 
