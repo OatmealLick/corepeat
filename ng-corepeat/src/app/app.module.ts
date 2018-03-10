@@ -13,6 +13,7 @@ import {CorepeatDetailedComponent} from './corepeat/corepeat-detailed/corepeat-d
 import {AppRoutingModule} from './/app-routing.module';
 import {CorepeatService} from "./corepeat/corepeat.service";
 import {ConfigurationService} from "./configuration.service";
+import {HttpClientInMemoryWebApiModule, InMemoryDbService} from "angular-in-memory-web-api";
 
 
 @NgModule({
@@ -26,7 +27,10 @@ import {ConfigurationService} from "./configuration.service";
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    )
   ],
   providers: [
     TestService,
