@@ -9,11 +9,11 @@ export class ConfigurationService {
     return this.getMockUrl();
   }
 
-  getAppUrl(): string {
+  private getAppUrl(): string {
     return "http://localhost:8080";
   }
 
-  getMockUrl(): string {
+  private getMockUrl(): string {
     return "api";
   }
 }

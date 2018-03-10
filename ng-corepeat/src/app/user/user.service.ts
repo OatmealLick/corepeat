@@ -7,10 +7,10 @@ import {User} from "./user";
 @Injectable()
 export class UserService {
 
-  private userPath: string = "user";
+  private userPath: string = "users";
 
-  constructor(private http: HttpClient,
-              private configuration: ConfigurationService) {
+  constructor(private configuration: ConfigurationService,
+              private http: HttpClient) {
   }
 
   getUser(id: number): Observable<User> {
