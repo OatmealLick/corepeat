@@ -1,23 +1,40 @@
 package corepeat.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER",
+@Table(name = "COREPEAT_USER",
         uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID" }) })
-public class User {
+public class CorepeatUser {
 
     @Id
+    @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
 
+    @Column(name = "MAIL")
     private String userEmail;
+
+    @Column(name = "PASSWORD_HASH")
     private char[] passwordHash;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "SURNAME")
     private String surname;
+
+    @Column(name = "BIRTHDATE")
     private String birthDate;
+
+    @Column(name = "CITY")
     private String city;
 
     @ManyToMany(cascade = { CascadeType.ALL })
@@ -31,7 +48,6 @@ public class User {
     @OneToMany(mappedBy="corepeat")
     Set<Corepeat> mentoredCorepeats = new HashSet<>();
 
-    @Column(name = "USER_ID")
     public Integer getUserId() {
         return userId;
     }
@@ -40,7 +56,6 @@ public class User {
         this.userId = userId;
     }
 
-    @Column(name = "MAIL")
     public String getUserEmail() {
         return userEmail;
     }
@@ -49,7 +64,6 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    @Column(name = "PASSWORD_HASH")
     public char[] getPasswordHash() {
         return passwordHash;
     }
@@ -58,7 +72,6 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -67,7 +80,6 @@ public class User {
         this.name = name;
     }
 
-    @Column(name = "SURNAME")
     public String getSurname() {
         return surname;
     }
@@ -76,7 +88,6 @@ public class User {
         this.surname = surname;
     }
 
-    @Column(name = "BIRTHDATE")
     public String getBirthDate() {
         return birthDate;
     }
@@ -85,12 +96,33 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    @Column(name = "CITY")
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CorepeatUser that = (CorepeatUser) o;
+        return Objects.equals(userId, that.userId) &&
+                Objects.equals(userEmail, that.userEmail) &&
+                Arrays.equals(passwordHash, that.passwordHash) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname) &&
+                Objects.equals(birthDate, that.birthDate) &&
+                Objects.equals(city, that.city);
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = Objects.hash(userId, userEmail, name, surname, birthDate, city);
+        result = 31 * result + Arrays.hashCode(passwordHash);
+        return result;
     }
 }

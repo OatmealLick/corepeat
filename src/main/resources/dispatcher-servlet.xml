@@ -16,7 +16,6 @@
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
 
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 				destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
@@ -38,7 +37,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             </props>
 		</property>
 	</bean>
