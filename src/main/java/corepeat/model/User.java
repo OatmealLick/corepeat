@@ -1,6 +1,8 @@
 package corepeat.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "USER",
@@ -18,7 +20,18 @@ public class User {
     private String birthDate;
     private String city;
 
-    @Column(name = "ID")
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "USER_COREPEATS",
+            joinColumns = { @JoinColumn(name = "USER_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "COREPEAT_ID") }
+    )
+    Set<Corepeat> corepeats = new HashSet<>();
+
+    @OneToMany(mappedBy="corepeat")
+    Set<Corepeat> mentoredCorepeats = new HashSet<>();
+
+    @Column(name = "USER_ID")
     public Integer getUserId() {
         return userId;
     }
