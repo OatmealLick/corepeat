@@ -8,4 +8,5 @@ import {TimeSelector} from "./corepeat/corepeat-list/time-selector";
 })
 export class AppComponent {
   title = 'app';
+  public timeSelectorEnum = TimeSelector;
 }

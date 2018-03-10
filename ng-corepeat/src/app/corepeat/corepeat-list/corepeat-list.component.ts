@@ -13,7 +13,7 @@ import {TimeSelector} from "./time-selector";
 export class CorepeatListComponent implements OnInit {
 
   @Input() timeSelector: TimeSelector;
-  corepeats: Corepeat[];
+  corepeats: Corepeat[] = [];
 
   constructor(private authService: AuthService,
               private userService: UserService,
@@ -28,14 +28,21 @@ export class CorepeatListComponent implements OnInit {
         this.corepeats = corepeats;
       } else {
         for(let corepeat of corepeats) {
+          // console.log(corepeat);
+          // console.log(corepeat.date);
+          // console.log(new Date(corepeat.date));
+
+          console.log(this.timeSelector);
           switch (this.timeSelector) {
             case TimeSelector.AFTER_CURRENT:
-              if (currentDate < corepeat.date) { //nadchodzace corepeaty
+              console.log('after');
+              if (currentDate < new Date(corepeat.date)) { //nadchodzace corepeaty
                 this.corepeats.push(corepeat);
               }
               break;
             case TimeSelector.BEFORE_CURRENT:
-              if (currentDate > corepeat.date) { //minione corepeaty
+              console.log('before');
+              if (currentDate > new Date(corepeat.date)) { //minione corepeaty
                 this.corepeats.push(corepeat);
               }
               break;
@@ -43,5 +50,6 @@ export class CorepeatListComponent implements OnInit {
         }
       }
     });
+    // console.log(this.corepeats);
   }
 }
