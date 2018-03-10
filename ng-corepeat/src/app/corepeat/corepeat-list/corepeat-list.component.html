@@ -1,5 +1,7 @@
 <ul class="corepeat-list">
   <li class="corepeat-list-element" *ngFor="let corepeat of corepeats">
-    <app-corepeat-summary [corepeat]="corepeat"></app-corepeat-summary>
+    <a routerLink="/corepeats/{{corepeat.id}}">
+      <app-corepeat-summary [corepeat]="corepeat"></app-corepeat-summary>
+    </a>
   </li>
 </ul>

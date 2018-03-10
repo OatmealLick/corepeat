@@ -33,6 +33,12 @@ public class CorepeatController {
         this.userService = userService;
     }
 
+    @RequestMapping(value = "/corepeats", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public String getCorepeats() {
+        return this.corepeatService.getCorepeatsJSON();
+    }
+
     @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String getCorepeatById(@PathVariable String id) {

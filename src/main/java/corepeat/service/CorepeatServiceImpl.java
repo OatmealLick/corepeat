@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CorepeatServiceImpl implements CorepeatService {
 
@@ -62,6 +64,20 @@ public class CorepeatServiceImpl implements CorepeatService {
         } catch (IOException e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    @Override
+    @Transactional
+    public String getCorepeatsJSON() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new Hibernate5Module());
+        try {
+            List<Corepeat> corepeats = this.corepeatDAO.getCorepeats();
+            return mapper.writeValueAsString(corepeats);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "0";
         }
     }
 
