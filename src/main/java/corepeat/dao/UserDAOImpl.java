@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void addUser(CorepeatUser corepeatUser) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(corepeatUser);
+        session.save(corepeatUser);
     }
 
     @Override

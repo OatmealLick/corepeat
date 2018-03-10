@@ -16,4 +16,5 @@ public interface UserService {
     String addMentorToCorepeat(Integer id, Integer corepeatId);
     String deleteMentorFromCorepeat(Integer id, Integer corepeatId);
 
+    Integer addUserFromJSON(String userBody);
 }
