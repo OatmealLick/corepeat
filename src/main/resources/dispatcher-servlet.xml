@@ -16,7 +16,6 @@
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
 
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 				destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
@@ -32,14 +31,13 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>corepeat.model.CorepeatUser</value>
-				<value>corepeat.model.Corepeat</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             </props>
 		</property>
 	</bean>
@@ -48,16 +46,8 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 
-    <bean id="corepeatDAO" class="corepeat.dao.CorepeatDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </bean>
-
     <bean id="userService" class="corepeat.service.UserServiceImpl">
         <property name="userDAO" ref="userDAO"></property>
-    </bean>
-
-    <bean id="corepeatService" class="corepeat.service.CorepeatServiceImpl">
-        <property name="corepeatDAO" ref="corepeatDAO"></property>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
