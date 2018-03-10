@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -22,14 +23,10 @@ import static org.junit.Assert.*;
 public class UserDAOImplTest {
 
     @Autowired
-    private SessionFactory sessionFactory;
-
-    @Autowired
     private UserService userService;
 
     @Test
-    @Rollback(false)
-    public void addUser() {
+    public void addAndGetUser() {
         CorepeatUser corepeatUser = new CorepeatUser();
         corepeatUser.setName("Bratumiła");
         corepeatUser.setSurname("Mścigniew");
@@ -38,7 +35,11 @@ public class UserDAOImplTest {
         corepeatUser.setPasswordHash("lUkA5Z5miERDzi".toCharArray());
         corepeatUser.setUserEmail("b.msci@pocta.pl");
 
-        sessionFactory.getCurrentSession().persist(corepeatUser);
 
+
+        userService.addUser(corepeatUser);
+
+        CorepeatUser newUser = userService.getUser(1);
+        assertEquals(corepeatUser, newUser);
     }
 }

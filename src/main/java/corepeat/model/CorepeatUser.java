@@ -4,6 +4,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 @Table(name = "COREPEAT_USER",
@@ -87,5 +89,27 @@ public class CorepeatUser {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CorepeatUser that = (CorepeatUser) o;
+        return Objects.equals(userId, that.userId) &&
+                Objects.equals(userEmail, that.userEmail) &&
+                Arrays.equals(passwordHash, that.passwordHash) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname) &&
+                Objects.equals(birthDate, that.birthDate) &&
+                Objects.equals(city, that.city);
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = Objects.hash(userId, userEmail, name, surname, birthDate, city);
+        result = 31 * result + Arrays.hashCode(passwordHash);
+        return result;
     }
 }
