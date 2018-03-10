@@ -13,4 +13,7 @@ public interface UserService {
     String getCorepeatsWithUserOfId(Integer userId);
     String addUserToCorepeat(Integer id, Integer corepeatId);
     String deleteUserFromCorepeat(Integer id, Integer corepeatId);
+    String addMentorToCorepeat(Integer id, Integer corepeatId);
+    String deleteMentorFromCorepeat(Integer id, Integer corepeatId);
+
 }

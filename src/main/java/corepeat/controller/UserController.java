@@ -51,4 +51,16 @@ public class UserController {
     public String deleteUserFromCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
         return userService.deleteUserFromCorepeat(new Integer(id), new Integer (corepeatId));
     }
+
+    @RequestMapping(value = "/users/{id}/mentor/{corepeatId}", method = RequestMethod.PUT, produces = "application/json")
+    @ResponseBody
+    public String addMentorToCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
+        return userService.addMentorToCorepeat(new Integer(id), new Integer (corepeatId));
+    }
+
+    @RequestMapping(value = "/users/{id}/mentor/{corepeatId}", method = RequestMethod.DELETE, produces = "application/json")
+    @ResponseBody
+    public String deleteMentorFromCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
+        return userService.deleteMentorFromCorepeat(new Integer(id), new Integer (corepeatId));
+    }
 }
