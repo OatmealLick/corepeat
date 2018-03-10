@@ -21,7 +21,9 @@ ul {
 
 #create-corepeat {
   border: none;
-  background: #57b17e;
+  background: #1bd017;
+  color: #fff;
+  font-weight: bold;
   padding: 20px;
   border-radius: 6px;
   font-size: 20px;
@@ -31,6 +33,7 @@ ul li {
   display: block;
   margin: 30px 0;
   padding: 30px;
-  background: #20eaf9;
+  background: rgba(228, 145, 65, 0.66);
+  color: #fff;
   border-radius: 6px;
 }
