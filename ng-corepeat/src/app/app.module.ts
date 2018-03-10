@@ -15,6 +15,9 @@ import {CorepeatService} from "./corepeat/corepeat.service";
 import {ConfigurationService} from "./configuration.service";
 import {HttpClientInMemoryWebApiModule, InMemoryDbService} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import { ContentHeaderComponent } from './content-header/content-header.component';
+import { NearbyCorepeatComponent } from './nearby-corepeat/nearby-corepeat.component';
+import { NearbyCorepeatsComponent } from './nearby-corepeats/nearby-corepeats.component';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import {InMemoryDataService} from "./in-memory-data.service";
     TestComponent,
     MessageComponent,
     UserDetailedComponent,
-    CorepeatDetailedComponent
+    CorepeatDetailedComponent,
+    NearbyCorepeatsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,32 @@
-<h1>Title</h1>
-<router-outlet></router-outlet>
+<div class="wrapper">
+
+  <nav id="sidebar"
+       [class.sidebarActive]="!sidebarVisible">
+
+    <div class="sidebar-logo">
+      <span>corepeat</span>
+      <!--<img src="../assets/corepeat.png"/>-->
+    </div>
+
+    <ul class="navigation-links">
+      <li><a routerLink="/corepeats">Przeglądaj Corepeaty</a></li>
+      <li><a routerLink="/dashboard">Panel użytkownika</a></li>
+      <li><a routerLink="/contact">Kontakt</a></li>
+    </ul>
+
+    <button type="button"
+            id="sidebarCollapse"
+            (click)="toggleSidebar()"
+            [class.active]="!sidebarVisible">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
