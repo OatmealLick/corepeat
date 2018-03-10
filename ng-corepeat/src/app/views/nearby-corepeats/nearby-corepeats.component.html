@@ -5,8 +5,4 @@
   </button>
 </div>
 
-<ul class="corepeat-list">
-  <li *ngFor="let corepeat of nearbyCorepeats">
-    <app-corepeat-summary [corepeat]="corepeat"></app-corepeat-summary>
-  </li>
-</ul>
+<app-corepeat-list [timeSelector]="timeSelectorType.NO_SELECTION"></app-corepeat-list>
