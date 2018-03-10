@@ -1,3 +1,5 @@
+import {User} from "../user/user";
+
 export class Corepeat {
   id: number;
   name: string;
