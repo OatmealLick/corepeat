@@ -32,6 +32,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>corepeat.model.CorepeatUser</value>
+				<value>corepeat.model.Corepeat</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

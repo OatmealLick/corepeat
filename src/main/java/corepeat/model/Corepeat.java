@@ -6,32 +6,46 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "USER",
-        uniqueConstraints = { @UniqueConstraint(columnNames = { "COREPEAT_ID" }) })
+@Table(name = "COREPEAT",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"COREPEAT_ID"})})
 public class Corepeat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "COREPEAT_ID")
     private Integer corepeatId;
 
-
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "CITY")
     private String city;
+
+    @Column(name = "COORDINATES")
     private String coordinates;
+
+    @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "MAX_PARTICIPANTS")
     private Integer maxParticipants;
+
+    @Column(name = "MAX_MENTORS")
     private Integer maxMentors;
+
+    @Column(name = "CURRENT_PARTICIPANTS")
     private Integer currentParticipants;
+
+    @Column(name = "CURRENT_MENTORS")
     private Integer currentMentors;
 
-    @ManyToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "corepeats")
     private Set<CorepeatUser> participants = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name="USER_ID", nullable=false)
+    @JoinColumn(name = "USER_ID", nullable = false)
     private CorepeatUser mentor;
 
-    @Column(name = "COREPEAT_ID")
     public Integer getCorepeatId() {
         return corepeatId;
     }
@@ -40,7 +54,6 @@ public class Corepeat {
         this.corepeatId = corepeatId;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -49,7 +62,6 @@ public class Corepeat {
         this.name = name;
     }
 
-    @Column(name = "CITY")
     public String getCity() {
         return city;
     }
@@ -58,7 +70,7 @@ public class Corepeat {
         this.city = city;
     }
 
-    @Column(name = "COORDINATES")
+
     public String getCoordinates() {
         return coordinates;
     }
@@ -67,7 +79,7 @@ public class Corepeat {
         this.coordinates = coordinates;
     }
 
-    @Column(name = "DESCRIPTION")
+
     public String getDescription() {
         return description;
     }
@@ -76,7 +88,6 @@ public class Corepeat {
         this.description = description;
     }
 
-    @Column(name = "MAX_PARTICIPANTS")
     public Integer getMaxParticipants() {
         return maxParticipants;
     }
@@ -85,7 +96,6 @@ public class Corepeat {
         this.maxParticipants = maxParticipants;
     }
 
-    @Column(name = "MAX_MENTORS")
     public Integer getMaxMentors() {
         return maxMentors;
     }
@@ -94,7 +104,6 @@ public class Corepeat {
         this.maxMentors = maxMentors;
     }
 
-    @Column(name = "CURRENT_PARTICIPANTS")
     public Integer getCurrentParticipants() {
         return currentParticipants;
     }
@@ -103,7 +112,6 @@ public class Corepeat {
         this.currentParticipants = currentParticipants;
     }
 
-    @Column(name = "CURRENT_MENTORS")
     public Integer getCurrentMentors() {
         return currentMentors;
     }
@@ -112,7 +120,6 @@ public class Corepeat {
         this.currentMentors = currentMentors;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "corepeat")
     public Set<CorepeatUser> getParticipants() {
         return participants;
     }
@@ -121,7 +128,6 @@ public class Corepeat {
         this.participants = participants;
     }
 
-    @Column(name = "MENTOR")
     public CorepeatUser getMentor() {
         return mentor;
     }

@@ -1,8 +1,5 @@
 package corepeat.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
@@ -11,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "COREPEAT_USER",
-        uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID" }) })
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID"})})
 public class CorepeatUser {
 
     @Id
@@ -20,6 +17,7 @@ public class CorepeatUser {
     private Integer userId;
 
     @Column(name = "MAIL")
+
     private String userEmail;
 
     @Column(name = "PASSWORD_HASH")
@@ -37,15 +35,15 @@ public class CorepeatUser {
     @Column(name = "CITY")
     private String city;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "USER_COREPEATS",
-            joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "COREPEAT_ID") }
+            joinColumns = {@JoinColumn(name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "COREPEAT_ID")}
     )
     Set<Corepeat> corepeats = new HashSet<>();
 
-    @OneToMany(mappedBy="corepeat")
+    @OneToMany(mappedBy = "mentor")
     Set<Corepeat> mentoredCorepeats = new HashSet<>();
 
     public Integer getUserId() {
@@ -102,6 +100,22 @@ public class CorepeatUser {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Set<Corepeat> getCorepeats() {
+        return corepeats;
+    }
+
+    public void setCorepeats(Set<Corepeat> corepeats) {
+        this.corepeats = corepeats;
+    }
+
+    public Set<Corepeat> getMentoredCorepeats() {
+        return mentoredCorepeats;
+    }
+
+    public void setMentoredCorepeats(Set<Corepeat> mentoredCorepeats) {
+        this.mentoredCorepeats = mentoredCorepeats;
     }
 
     @Override
