@@ -1,9 +1,18 @@
-group 'corepeat'
-version '1.0-SNAPSHOT'
+plugins {
+    id "org.akhikhl.gretty" version "2.0.0"
+}
+
+gretty {
+    httpPort = 8080
+    contextPath = ''
+}
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'war'
+
+group 'corepeat'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -17,9 +26,14 @@ dependencies {
     compile 'org.springframework:spring-context:5.0.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.4.RELEASE'
     compile group: 'org.springframework', name: 'spring-web', version: '5.0.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '5.0.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.0.4.RELEASE'
     compile group: 'javax.servlet.jsp.jstl', name: 'jstl-api', version: '1.2'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.14.Final'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.springframework', name: 'spring-test', version: '5.0.4.RELEASE'
+
 }

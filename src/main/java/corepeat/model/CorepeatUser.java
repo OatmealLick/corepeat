@@ -1,24 +1,38 @@
 package corepeat.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER",
+@Table(name = "COREPEAT_USER",
         uniqueConstraints = { @UniqueConstraint(columnNames = { "USER_ID" }) })
-public class User {
+public class CorepeatUser {
 
     @Id
+    @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
 
+    @Column(name = "MAIL")
     private String userEmail;
+
+    @Column(name = "PASSWORD_HASH")
     private char[] passwordHash;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "SURNAME")
     private String surname;
+
+    @Column(name = "BIRTHDATE")
     private String birthDate;
+
+    @Column(name = "CITY")
     private String city;
 
-    @Column(name = "ID")
     public Integer getUserId() {
         return userId;
     }
@@ -27,7 +41,6 @@ public class User {
         this.userId = userId;
     }
 
-    @Column(name = "MAIL")
     public String getUserEmail() {
         return userEmail;
     }
@@ -36,7 +49,6 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    @Column(name = "PASSWORD_HASH")
     public char[] getPasswordHash() {
         return passwordHash;
     }
@@ -45,7 +57,6 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -54,7 +65,6 @@ public class User {
         this.name = name;
     }
 
-    @Column(name = "SURNAME")
     public String getSurname() {
         return surname;
     }
@@ -63,7 +73,6 @@ public class User {
         this.surname = surname;
     }
 
-    @Column(name = "BIRTHDATE")
     public String getBirthDate() {
         return birthDate;
     }
@@ -72,7 +81,6 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    @Column(name = "CITY")
     public String getCity() {
         return city;
     }
