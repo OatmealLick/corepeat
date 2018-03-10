@@ -46,4 +46,9 @@ public class UserController {
         return userService.addUserToCorepeat(new Integer(id), new Integer (corepeatId));
     }
 
+    @RequestMapping(value = "/users/{id}/corepeats/{corepeatId}", method = RequestMethod.DELETE, produces = "application/json")
+    @ResponseBody
+    public String deleteUserFromCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
+        return userService.deleteUserFromCorepeat(new Integer(id), new Integer (corepeatId));
+    }
 }
