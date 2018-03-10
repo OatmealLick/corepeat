@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  private message: string;
+  message: string;
 
-  constructor() { }
+  constructor() {
+    this.message = 'Nie moge dac nic fajnieszego';
+  }
 
   ngOnInit() {
   }

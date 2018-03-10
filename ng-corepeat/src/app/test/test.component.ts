@@ -9,7 +9,7 @@ import {MessageComponent} from "../message/message.component";
 })
 export class TestComponent implements OnInit {
 
-  private message: MessageComponent;
+  message: MessageComponent = new MessageComponent();
 
   constructor(private testService: TestService) {
   }
@@ -19,6 +19,7 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getMessage();
   }
 
 }
