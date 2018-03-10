@@ -2,6 +2,7 @@ package corepeat.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import corepeat.model.CorepeatUser;
 import corepeat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,7 @@ public class UserController {
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String getUserById(@PathVariable String id) {
-        CorepeatUser corepeatUser = userService.getUser(new Integer(id));
-        try {
-            return new ObjectMapper().writeValueAsString(corepeatUser);
-        } catch (JsonProcessingException e) {
-            return "redirect:error";
-        }
+        return userService.getUserJSON(new Integer(id));
     }
 
 }

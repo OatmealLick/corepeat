@@ -4,6 +4,6 @@ import corepeat.model.CorepeatUser;
 
 public interface UserDAO {
 
-    public void addUser(CorepeatUser corepeatUser);
-    public CorepeatUser getUserById(Integer userId);
+    void addUser(CorepeatUser corepeatUser);
+    CorepeatUser getUserById(Integer userId);
 }

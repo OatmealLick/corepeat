@@ -1,5 +1,7 @@
 package corepeat.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import corepeat.dao.UserDAO;
 import corepeat.model.CorepeatUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,15 @@ public class UserServiceImpl implements UserService {
         return this.userDAO.getUserById(userId);
     }
 
+    @Override
+    @Transactional
+    public String getUserJSON(Integer userId) {
+        CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
+        try {
+            return new ObjectMapper().writeValueAsString(corepeatUser);
+        } catch (JsonProcessingException e) {
+            return "redirect:error";
+        }
+    }
 
 }

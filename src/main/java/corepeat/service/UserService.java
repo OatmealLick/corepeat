@@ -5,6 +5,6 @@ import corepeat.model.CorepeatUser;
 public interface UserService {
 
     void addUser(CorepeatUser corepeatUser);
-    CorepeatUser getUser(Integer userID);
-
+    CorepeatUser getUser(Integer userId);
+    String getUserJSON(Integer userId);
 }
