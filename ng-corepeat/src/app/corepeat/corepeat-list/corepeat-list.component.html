@@ -1,5 +1,7 @@
-<ul>
-  <li *ngFor="let corepeat of corepeats">
-    {{corepeat.name}} {{corepeat.city}} {{corepeat.date}}
+<ul class="corepeat-list">
+  <li class="corepeat-list-element" *ngFor="let corepeat of corepeats">
+    <a routerLink="/corepeats/{{corepeat.id}}">
+      <app-corepeat-summary [corepeat]="corepeat"></app-corepeat-summary>
+    </a>
   </li>
 </ul>

@@ -1,1 +1,11 @@
 <h1 class="page-header">Panel użytkownika</h1>
+<div class="dashboard">
+  <div class="corepeats-coming column">
+    <h2>Nadchodzące corepeaty</h2>
+    <app-corepeat-list [timeSelector]="timeSelectorType.AFTER_CURRENT"></app-corepeat-list>
+  </div>
+  <div class="corepeats-past column">
+    <h2>Minione corepeaty</h2>
+    <app-corepeat-list [timeSelector]="timeSelectorType.BEFORE_CURRENT"></app-corepeat-list>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CorepeatService} from "../../corepeat/corepeat.service";
 import {Corepeat} from "../../corepeat/corepeat";
+import {TimeSelector} from "../../corepeat/corepeat-list/corepeat-list.component";
 
 @Component({
   selector: 'app-nearby-corepeats',
@@ -9,6 +10,7 @@ import {Corepeat} from "../../corepeat/corepeat";
 })
 export class NearbyCorepeatsComponent implements OnInit {
 
+  public timeSelectorType = TimeSelector;
   nearbyCorepeats: Corepeat[];
 
   constructor(private corepeatService: CorepeatService) { }

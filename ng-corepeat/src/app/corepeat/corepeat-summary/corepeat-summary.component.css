@@ -2,8 +2,32 @@
   position: relative;
 }
 
-.participants-count {
+h2 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.where-and-when {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.participants {
   position: absolute;
   top: 0;
   right: 15px;
+}
+
+.participants .title,
+.participants .count {
+  width: 100%;
+  text-align: center;
+}
+
+.participants .count {
+  font-size: 30px;
 }

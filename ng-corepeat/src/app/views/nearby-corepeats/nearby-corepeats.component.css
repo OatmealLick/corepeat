@@ -1,14 +1,39 @@
 ul {
   list-style-type: none;
-  margin: 50px 25px 0 40px;
   padding: 0;
+  width: 100%;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.page-header-elem {
+}
+
+#create-corepeat {
+  border: none;
+  background: #1bd017;
+  color: #fff;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 20px;
 }
 
 ul li {
   display: block;
   margin: 30px 0;
-  padding: 20px;
-  background-color: #6e9aa1;
+  padding: 30px;
+  background: rgba(228, 145, 65, 0.66);
   color: #fff;
   border-radius: 6px;
 }
