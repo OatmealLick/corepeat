@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     @Qualifier("corepeatDAO")
-    public void setCorepeatDAO (CorepeatDAO corepeatDAO) {
+    public void setCorepeatDAO(CorepeatDAO corepeatDAO) {
         this.corepeatDAO = corepeatDAO;
     }
 
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
     public String addUserToCorepeat(Integer id, Integer corepeatId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(id);
         Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
-        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants()+1);
+        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants() + 1);
         corepeatUser.getCorepeats().add(corepeat);
         corepeat.getParticipants().add(corepeatUser);
         return "1";
@@ -89,8 +89,32 @@ public class UserServiceImpl implements UserService {
         CorepeatUser corepeatUser = this.userDAO.getUserById(id);
         Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
         corepeatUser.getCorepeats().remove(corepeat);
-        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants()-1);
+        corepeat.setCurrentParticipants(corepeat.getCurrentParticipants() - 1);
         corepeat.getParticipants().remove(corepeatUser);
+        return "1";
+    }
+
+    @Override
+    @Transactional
+    public String addMentorToCorepeat(Integer id, Integer corepeatId) {
+        CorepeatUser corepeatUser = this.userDAO.getUserById(id);
+        Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
+        if (corepeat.getMaxMentors() > corepeat.getCurrentMentors()) {
+            corepeat.setCurrentMentors(corepeat.getCurrentMentors() + 1);
+            corepeat.setMentor(corepeatUser);
+            corepeatUser.getMentoredCorepeats().add(corepeat);
+            return "1";
+        } else return "0";
+    }
+
+    @Override
+    @Transactional
+    public String deleteMentorFromCorepeat(Integer id, Integer corepeatId) {
+        CorepeatUser corepeatUser = this.userDAO.getUserById(id);
+        Corepeat corepeat = this.corepeatDAO.getCorepeatById(corepeatId);
+        corepeatUser.getMentoredCorepeats().remove(corepeat);
+        corepeat.setCurrentMentors(corepeat.getCurrentMentors() -1);
+        corepeat.setMentor(null);
         return "1";
     }
 
