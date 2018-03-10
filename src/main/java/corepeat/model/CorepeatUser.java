@@ -94,6 +94,7 @@ public class CorepeatUser {
         this.birthDate = birthDate;
     }
 
+    @Column(name = "CITY")
     public String getCity() {
         return city;
     }
