@@ -4,6 +4,7 @@ export class Corepeat {
   id: number;
   name: string;
   city: string;
+  date: Date;
   latitude: number;
   longtitude: number;
   description: string;

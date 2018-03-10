@@ -17,4 +17,8 @@ export class UserService {
     const url = `${this.configuration.getUrl()}/${this.userPath}/${id}`;
     return this.http.get<User>(url);
   }
+
+  createUser(user: User): {
+
+  }
 }
