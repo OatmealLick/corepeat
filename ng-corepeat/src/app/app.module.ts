@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {TestComponent} from './test/test.component';
 import {TestService} from "./test.service";
 import {MessageComponent} from './message/message.component';
-import { DumbComponent } from './dumb/dumb.component';
 import {HttpClientModule} from "@angular/common/http";
 
 
@@ -14,8 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AppComponent,
     TestComponent,
-    MessageComponent,
-    DumbComponent
+    MessageComponent
   ],
   imports: [
     BrowserModule,
