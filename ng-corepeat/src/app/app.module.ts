@@ -14,6 +14,7 @@ import {AppRoutingModule} from './/app-routing.module';
 import {CorepeatService} from "./corepeat/corepeat.service";
 import {ConfigurationService} from "./configuration.service";
 import {HttpClientInMemoryWebApiModule, InMemoryDbService} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
 
 
 @NgModule({

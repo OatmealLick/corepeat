@@ -1,5 +1,10 @@
-<p>
-  <h1>Hello!</h1>
-  <h2>User detailed information!</h2>
-  <p>
-</p>
+<div *ngIf="user">
+  <div class="user-info">
+    <h1>{{user.name}} {{user.surname}}</h1>
+  </div>
+  <div class="user-description">
+    <p>
+      {{user.description}}
+    </p>
+  </div>
+</div>
