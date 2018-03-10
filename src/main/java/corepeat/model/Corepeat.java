@@ -1,6 +1,7 @@
 package corepeat.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,6 +39,9 @@ public class Corepeat {
 
     @Column(name = "CURRENT_MENTORS")
     private Integer currentMentors;
+
+    @Column(name = "DATE")
+    private Date date;
 
     @ManyToMany(mappedBy = "corepeats")
     private Set<CorepeatUser> participants = new HashSet<>();
@@ -134,5 +138,14 @@ public class Corepeat {
 
     public void setMentor(CorepeatUser mentor) {
         this.mentor = mentor;
+    }
+
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
