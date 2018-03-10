@@ -40,6 +40,7 @@ public class CorepeatServiceImpl implements CorepeatService {
     @Transactional
     public String getCorepeatJSON(Integer id) {
         Corepeat corepeat = this.corepeatDAO.getCorepeatById(id);
+        //System.out.println(corepeat.getParticipants());
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new Hibernate5Module());

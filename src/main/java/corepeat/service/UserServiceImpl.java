@@ -51,6 +51,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String getUserJSON(Integer userId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
+       // System.out.println(corepeatUser.getCorepeats());
+       // System.out.println(corepeatUser.getMentoredCorepeats());
+
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new Hibernate5Module());

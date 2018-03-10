@@ -1,6 +1,6 @@
 package corepeat.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +9,7 @@ import java.util.Set;
 
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "corepeatId")
 @Table(name = "COREPEAT",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"COREPEAT_ID"})})
 public class Corepeat {
@@ -54,13 +55,13 @@ public class Corepeat {
     @JsonProperty("date")
     private Date date;
 
-    @ManyToMany(mappedBy = "corepeats")
-    @JsonProperty("participants")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "corepeats")
     private Set<CorepeatUser> participants = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "MENTOR_ID")
     @JsonProperty("mentor")
+    @JsonManagedReference
     private CorepeatUser mentor;
 
     public Integer getCorepeatId() {
