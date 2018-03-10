@@ -7,10 +7,7 @@ import corepeat.service.CorepeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,14 +31,11 @@ public class CorepeatController {
         return this.corepeatService.getCorepeatJSON(new Integer(id));
     }
 
-    @RequestMapping(value = "/corepeats", method = RequestMethod.POST)
+    @RequestMapping(value = "/corepeats/{userId}", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public void addCorepeat(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            String corepeatBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            this.corepeatService.addCorepeatFromJSON(corepeatBody);
-        } catch (IOException e) {
-            response.setStatus(500);
-        }
+    public void addCorepeat(@RequestBody String corepeatBody, @PathVariable String userId, HttpServletResponse response) {
+        this.corepeatService.addCorepeatFromJSON(corepeatBody);
+
+        response.setStatus(200);
     }
 }

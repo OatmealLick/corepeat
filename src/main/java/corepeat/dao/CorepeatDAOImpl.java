@@ -18,7 +18,7 @@ public class CorepeatDAOImpl implements CorepeatDAO {
     @Override
     public void addCorepeat(Corepeat corepeat) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(corepeat);
+        session.save(corepeat);
     }
 
     @Override

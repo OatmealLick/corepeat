@@ -1,5 +1,7 @@
 package corepeat.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -17,37 +19,48 @@ public class Corepeat {
     private Integer corepeatId;
 
     @Column(name = "NAME")
+    @JsonProperty("name")
     private String name;
 
     @Column(name = "CITY")
+    @JsonProperty("city")
     private String city;
 
     @Column(name = "COORDINATES")
+    @JsonProperty("coordinates")
     private String coordinates;
 
     @Column(name = "DESCRIPTION")
+    @JsonProperty("description")
     private String description;
 
     @Column(name = "MAX_PARTICIPANTS")
+    @JsonProperty("maxParticipants")
     private Integer maxParticipants;
 
     @Column(name = "MAX_MENTORS")
+    @JsonProperty("maxMentors")
     private Integer maxMentors;
 
     @Column(name = "CURRENT_PARTICIPANTS")
+    @JsonProperty("currentParticipants")
     private Integer currentParticipants;
 
     @Column(name = "CURRENT_MENTORS")
+    @JsonProperty("currentMentors")
     private Integer currentMentors;
 
     @Column(name = "DATE")
+    @JsonProperty("date")
     private Date date;
 
     @ManyToMany(mappedBy = "corepeats")
+    @JsonProperty("participants")
     private Set<CorepeatUser> participants = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "MENTOR_ID")
+    @JsonProperty("mentor")
     private CorepeatUser mentor;
 
     public Integer getCorepeatId() {
@@ -74,7 +87,6 @@ public class Corepeat {
         this.city = city;
     }
 
-
     public String getCoordinates() {
         return coordinates;
     }
@@ -82,7 +94,6 @@ public class Corepeat {
     public void setCoordinates(String coordinates) {
         this.coordinates = coordinates;
     }
-
 
     public String getDescription() {
         return description;
@@ -139,7 +150,6 @@ public class Corepeat {
     public void setMentor(CorepeatUser mentor) {
         this.mentor = mentor;
     }
-
 
     public Date getDate() {
         return date;

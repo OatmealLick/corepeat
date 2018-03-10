@@ -8,6 +8,7 @@ import corepeat.model.Corepeat;
 import corepeat.model.CorepeatUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
@@ -22,15 +23,19 @@ public class CorepeatServiceImpl implements CorepeatService {
     }
 
     @Override
+    @Transactional
     public void addCorepeat(Corepeat corepeat) {
+        this.corepeatDAO.addCorepeat(corepeat);
     }
 
     @Override
+    @Transactional
     public Corepeat getCorepeatById(Integer id) {
         return this.corepeatDAO.getCorepeatById(id);
     }
 
     @Override
+    @Transactional
     public String getCorepeatJSON(Integer id) {
         Corepeat corepeat = this.corepeatDAO.getCorepeatById(id);
         try {
@@ -43,6 +48,7 @@ public class CorepeatServiceImpl implements CorepeatService {
     }
 
     @Override
+    @Transactional
     public void addCorepeatFromJSON(String corepeatBody) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new Hibernate5Module());

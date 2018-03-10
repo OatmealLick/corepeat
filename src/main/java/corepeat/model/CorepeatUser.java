@@ -1,5 +1,7 @@
 package corepeat.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
@@ -17,22 +19,27 @@ public class CorepeatUser {
     private Integer userId;
 
     @Column(name = "MAIL")
-
+    @JsonProperty("userEmail")
     private String userEmail;
 
     @Column(name = "PASSWORD_HASH")
+    @JsonProperty("passwordHash")
     private char[] passwordHash;
 
     @Column(name = "NAME")
+    @JsonProperty("name")
     private String name;
 
     @Column(name = "SURNAME")
+    @JsonProperty("surname")
     private String surname;
 
     @Column(name = "BIRTHDATE")
+    @JsonProperty("birthDate")
     private String birthDate;
 
     @Column(name = "CITY")
+    @JsonProperty("city")
     private String city;
 
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -41,9 +48,11 @@ public class CorepeatUser {
             joinColumns = {@JoinColumn(name = "USER_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COREPEAT_ID")}
     )
+    @JsonProperty("corepeats")
     Set<Corepeat> corepeats = new HashSet<>();
 
     @OneToMany(mappedBy = "mentor")
+    @JsonProperty("mentoredCorepeats")
     Set<Corepeat> mentoredCorepeats = new HashSet<>();
 
     public Integer getUserId() {
@@ -134,7 +143,6 @@ public class CorepeatUser {
 
     @Override
     public int hashCode() {
-
         int result = Objects.hash(userId, userEmail, name, surname, birthDate, city);
         result = 31 * result + Arrays.hashCode(passwordHash);
         return result;
