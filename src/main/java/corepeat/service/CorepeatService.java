@@ -6,4 +6,6 @@ public interface CorepeatService {
 
     void addCorepeat(Corepeat corepeat);
     Corepeat getCorepeatById(Integer id);
+    String getCorepeatJSON(Integer id);
+    void addCorepeatFromJSON(String corepeatBody);
 }

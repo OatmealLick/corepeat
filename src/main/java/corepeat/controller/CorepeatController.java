@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.stream.Collectors;
 
 @Controller
 public class CorepeatController {
@@ -28,11 +31,17 @@ public class CorepeatController {
     @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String getCorepeatById(@PathVariable String id) {
-        Corepeat corepeat = corepeatService.getCorepeatById(new Integer(id));
+        return this.corepeatService.getCorepeatJSON(new Integer(id));
+    }
+
+    @RequestMapping(value = "/corepeats", method = RequestMethod.POST)
+    @ResponseBody
+    public void addCorepeat(HttpServletRequest request, HttpServletResponse response) {
         try {
-            return new ObjectMapper().writeValueAsString(corepeat);
-        } catch (JsonProcessingException e) {
-            return "redirect:error";
+            String corepeatBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+            this.corepeatService.addCorepeatFromJSON(corepeatBody);
+        } catch (IOException e) {
+            response.setStatus(500);
         }
     }
 }
