@@ -16,7 +16,7 @@ import { CorepeatListComponent } from './corepeat/corepeat-list/corepeat-list.co
 import {AuthService} from "./auth.service";
 import { ContactComponent } from './views/contact/contact.component';
 import { CorepeatSummaryComponent } from './corepeat/corepeat-summary/corepeat-summary.component';
-import { CreateCorepeatComponent } from './corepeat/create-corepeat/create-corepeat.component';
+import { CreateCorepeatComponent } from './views/create-corepeat/create-corepeat.component';
 
 
 @NgModule({

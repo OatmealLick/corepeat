@@ -2,28 +2,6 @@
   display: flex;
 }
 
-.icon {
-  margin-right: 10px;
-}
-
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
-#create-corepeat {
-  border: none;
-  background: #1bd017;
-  color: #fff;
-  font-weight: bold;
-  padding: 20px;
-  border-radius: 6px;
-  font-size: 20px;
-}
-
 .column {
   flex: 50%;
   margin: 0 15px 0 15px;
