@@ -64,11 +64,18 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String getCorepeatsWithUserOfId(Integer userId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
-        List<Corepeat> corepeats = new ArrayList<>(corepeatUser.getCorepeats());
+        List<String> toReturn = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new Hibernate5Module());
-            return mapper.writeValueAsString(corepeats);
+            for (Corepeat c: corepeatUser.getCorepeats()) {
+                toReturn.add(mapper.writeValueAsString(corepeatDAO.getCorepeatById(c.getCorepeatId())));
+            }
+            String string = "";
+            for (String s: toReturn) {
+                string = string + "," + s;
+            }
+            return "[" + string.substring(1) + "]";
         } catch (JsonProcessingException e) {
             return "redirect:error";
         }

@@ -40,7 +40,7 @@ public class AchievementServiceImpl implements AchievementService{
         Stream<CorepeatUser> stream = userDAO.getUserStream();
         stream.forEach(c -> {
             AchievementProgress progress = new AchievementProgress();
-            progress.setAchievementName("Kreator");
+            progress.setAchievementName("Sensei");
             progress.setProgress(0);
             progress.setProgressCap(5);
             progress.setUser(c);
