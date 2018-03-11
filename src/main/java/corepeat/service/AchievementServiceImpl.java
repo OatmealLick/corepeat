@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class AchievementServiceImpl implements AchievementService{
@@ -45,5 +46,11 @@ public class AchievementServiceImpl implements AchievementService{
             progress.setUser(c);
             achievementDAO.addAchievementDao(progress);}
             );
+    }
+
+    @Override
+    @Transactional
+    public List<String> getAchievementsOfUser(Integer id) {
+        return achievementDAO.getAchievementsOfUser(id);
     }
 }
