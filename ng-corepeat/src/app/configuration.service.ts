@@ -12,8 +12,4 @@ export class ConfigurationService {
   private getAppUrl(): string {
     return "http://localhost:8080";
   }
-
-  private getMockUrl(): string {
-    return "api";
-  }
 }

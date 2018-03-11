@@ -27,6 +27,7 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
+    @CrossOrigin
     public void addUser(@RequestBody String userBody, HttpServletResponse response) {
         this.userService.addUserFromJSON(userBody);
         response.setStatus(200);
@@ -47,36 +48,42 @@ public class UserController {
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String getUserById(@PathVariable String id) {
         return userService.getUserJSON(new Integer(id));
     }
 
     @RequestMapping(value = "/users/{id}/corepeats", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String getCorepeatsWithUserOfId(@PathVariable String id) {
         return userService.getCorepeatsWithUserOfId(new Integer(id));
     }
 
     @RequestMapping(value = "/users/{id}/corepeats/{corepeatId}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String addUserToCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
         return userService.addUserToCorepeat(new Integer(id), new Integer (corepeatId));
     }
 
     @RequestMapping(value = "/users/{id}/corepeats/{corepeatId}", method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String deleteUserFromCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
         return userService.deleteUserFromCorepeat(new Integer(id), new Integer (corepeatId));
     }
 
     @RequestMapping(value = "/users/{id}/mentor/{corepeatId}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String addMentorToCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
         return userService.addMentorToCorepeat(new Integer(id), new Integer (corepeatId));
     }
 
     @RequestMapping(value = "/users/{id}/mentor/{corepeatId}", method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String deleteMentorFromCorepeat(@PathVariable("id") String id, @PathVariable("corepeatId") String corepeatId) {
         return userService.deleteMentorFromCorepeat(new Integer(id), new Integer (corepeatId));
     }

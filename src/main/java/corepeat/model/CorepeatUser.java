@@ -55,6 +55,18 @@ public class CorepeatUser {
     @JsonBackReference
     Set<Corepeat> mentoredCorepeats = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private AchievementProgress progress;
+
+
+    public AchievementProgress getProgress() {
+        return progress;
+    }
+
+    public void setProgress(AchievementProgress progress) {
+        this.progress = progress;
+    }
+
     public Integer getUserId() {
         return userId;
     }

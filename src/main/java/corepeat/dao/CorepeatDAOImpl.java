@@ -41,8 +41,9 @@ public class CorepeatDAOImpl implements CorepeatDAO {
         CriteriaQuery<Corepeat> query = builder.createQuery(Corepeat.class);
         Root<Corepeat> root = query.from(Corepeat.class);
         query.select(root);
-        Query<Corepeat> q=session.createQuery(query);
-        List<Corepeat> corepeats =q.getResultList();
+        Query<Corepeat> q = session.createQuery(query);
+        List<Corepeat> corepeats = q.list();
         return corepeats;
     }
 }
+git ad

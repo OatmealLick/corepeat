@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.stream.Stream;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -46,6 +47,12 @@ public class UserDAOImpl implements UserDAO {
         CorepeatUser corepeatUser = null;
         if (q.list().size() > 0) corepeatUser = q.getSingleResult();
         return corepeatUser;
+    }
+
+    @Override
+    public Stream<CorepeatUser> getUserStream() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.createQuery("SELECT b FROM CorepeatUser b", CorepeatUser.class).stream();
     }
 
 }

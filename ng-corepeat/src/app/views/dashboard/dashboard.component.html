@@ -1,11 +1,17 @@
-<h1 class="page-header">Panel użytkownika</h1>
+<div class="page-header">
+  <h1 class="page-header-elem">Panel użytkownika</h1>
+  <button routerLink="/create" class="page-header-elem" id="create-corepeat">
+    <i class="icon fa fa-plus-circle" aria-hidden="true"></i>Utwórz Corepeata
+  </button>
+</div>
+
 <div class="dashboard">
   <div class="corepeats-coming column">
-    <h2>Nadchodzące corepeaty</h2>
+    <h2><i class="icon-extended fa fa-calendar" aria-hidden="true"></i>Nadchodzące Corepeaty</h2>
     <app-corepeat-list [timeSelector]="timeSelectorType.AFTER_CURRENT"></app-corepeat-list>
   </div>
   <div class="corepeats-past column">
-    <h2>Minione corepeaty</h2>
+    <h2><i class="icon-extended fa fa-book" aria-hidden="true"></i>Minione Corepeaty</h2>
     <app-corepeat-list [timeSelector]="timeSelectorType.BEFORE_CURRENT"></app-corepeat-list>
   </div>
 </div>
