@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {UserDetailedComponent} from "./user/user-detailed/user-detailed.component";
 import {CorepeatDetailedComponent} from "./corepeat/corepeat-detailed/corepeat-detailed.component";
@@ -26,4 +26,5 @@ const routes: Routes = [
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

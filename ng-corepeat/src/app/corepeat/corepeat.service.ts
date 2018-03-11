@@ -21,8 +21,7 @@ export class CorepeatService {
   }
 
   getNearbyCorepeats(): Observable<Corepeat[]> {
-    const url = `${this.configuration.getUrl()}/${this.corepeatsPath}`
-    console.log(url);
+    const url = `${this.configuration.getUrl()}/${this.corepeatsPath}`;
     return this.http.get<Corepeat[]>(url);
   }
 }
