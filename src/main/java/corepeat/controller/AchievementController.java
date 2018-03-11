@@ -60,7 +60,7 @@ public class AchievementController {
     @ResponseBody
     @CrossOrigin
     public String getAchievementsOfUser(@PathVariable String id) {
-        return new GsonBuilder().create().toJson(achievementService.getAchievementsOfUser(new Integer(id)));
+        return "{\"achievements\": " + new GsonBuilder().create().toJson(achievementService.getAchievementsOfUser(new Integer(id))) + " }";
     }
 
 
