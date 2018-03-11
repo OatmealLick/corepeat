@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Corepeat} from "../../corepeat/corepeat";
+import {CorepeatService} from "../../corepeat/corepeat.service";
 
 @Component({
   selector: 'app-create-corepeat',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCorepeatComponent implements OnInit {
 
-  constructor() { }
+  createdCorepeat: Corepeat = new Corepeat();
+
+  constructor(private corepeatService: CorepeatService) { }
 
   ngOnInit() {
   }
 
+  submitCorepeat() {
+    this.corepeatService.createCorepeat(this.createdCorepeat).subscribe(sent => {});
+  }
 }
