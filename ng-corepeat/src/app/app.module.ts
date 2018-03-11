@@ -10,8 +10,6 @@ import {CorepeatDetailedComponent} from './corepeat/corepeat-detailed/corepeat-d
 import {AppRoutingModule} from './app-routing.module';
 import {CorepeatService} from "./corepeat/corepeat.service";
 import {ConfigurationService} from "./configuration.service";
-import {HttpClientInMemoryWebApiModule, InMemoryDbService} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "./in-memory-data.service";
 import { NearbyCorepeatsComponent } from './views/nearby-corepeats/nearby-corepeats.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { CorepeatListComponent } from './corepeat/corepeat-list/corepeat-list.component';
@@ -35,9 +33,7 @@ import {AgmCoreModule} from "angular2-google-maps/core";
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false})
+    AppRoutingModule
   ],
   providers: [
     CorepeatService,

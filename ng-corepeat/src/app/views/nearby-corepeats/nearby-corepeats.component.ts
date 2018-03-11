@@ -16,11 +16,5 @@ export class NearbyCorepeatsComponent implements OnInit {
   constructor(private corepeatService: CorepeatService) { }
 
   ngOnInit() {
-    this.getNearbyCorepeats();
   }
-
-  getNearbyCorepeats(): void {
-    this.corepeatService.getNearbyCorepeats().subscribe(corepeats => this.nearbyCorepeats = corepeats);
-  }
-
 }

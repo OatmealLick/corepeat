@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Corepeat} from "../corepeat";
 import {AuthService} from "../../auth.service";
 import {UserService} from "../../user/user.service";
+import {CorepeatService} from "../corepeat.service";
 
 export enum TimeSelector {
   BEFORE_CURRENT, AFTER_CURRENT, NO_SELECTION
@@ -18,26 +19,24 @@ export class CorepeatListComponent implements OnInit {
   corepeats: Corepeat[] = [];
 
   constructor(private authService: AuthService,
-              private userService: UserService) {
+              private userService: UserService,
+              private corepeatService: CorepeatService) {
   }
 
   ngOnInit() {
     const userId = this.authService.getLoggedUserId();
     const currentDate = new Date();
-    console.log(this.timeSelector);
-    this.userService.getCorepeatsOfUser(userId).subscribe(corepeats => {
-      if (this.timeSelector === TimeSelector.NO_SELECTION) {
-        this.corepeats = corepeats;
-      } else {
-        console.log(corepeats[0].date);
-        for(let corepeat of corepeats) {
+
+    if (this.timeSelector === TimeSelector.NO_SELECTION) {
+      console.log('Fetching nearby corepeats');
+      this.corepeatService.getNearbyCorepeats().subscribe(corepeats => this.corepeats = corepeats);
+    }
+    else {
+      this.userService.getCorepeatsOfUser(userId).subscribe(corepeats => {
+        for (let corepeat of corepeats) {
           switch (this.timeSelector) {
             case TimeSelector.AFTER_CURRENT:
-              console.log("after switch case 1");
-              console.log(currentDate);
-              console.log(new Date(corepeat.date));
               if (currentDate < new Date(corepeat.date)) { //nadchodzace corepeaty
-                console.log("in if");
                 this.corepeats.push(corepeat);
               }
               break;
@@ -48,8 +47,7 @@ export class CorepeatListComponent implements OnInit {
               break;
           }
         }
-        console.log(this.corepeats);
-      }
-    });
+      });
+    }
   }
 }
