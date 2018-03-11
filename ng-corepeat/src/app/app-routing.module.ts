@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'corepeats', component: NearbyCorepeatsComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'contact', component: ContactComponent},
-  // {path: '**', component: NearbyCorepeatsComponent, pathMatch: 'full'}
+  {path: '**', component: NearbyCorepeatsComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

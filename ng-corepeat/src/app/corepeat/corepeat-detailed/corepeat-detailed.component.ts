@@ -2,7 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Corepeat} from "../corepeat";
 import {CorepeatService} from "../corepeat.service";
 import {ActivatedRoute} from "@angular/router";
-import {} from '@types/googlemaps';
+import LatLng = google.maps.LatLng;
+import MapTypeId = google.maps.MapTypeId;
 
 @Component({
   selector: 'app-corepeat-detailed',
@@ -12,7 +13,7 @@ import {} from '@types/googlemaps';
 export class CorepeatDetailedComponent implements OnInit {
 
   @ViewChild('gmap') gmapElement: any;
-  map: google.maps.Map;
+  map: Map;
 
   corepeat: Corepeat;
 
@@ -22,17 +23,24 @@ export class CorepeatDetailedComponent implements OnInit {
 
   ngOnInit() {
     this.getCorepeatDetails();
-    const coords = this.corepeat.coordinates.split(';');
+    // console.log(this.corepeat);
+    // console.log(this.corepeatService.getCorepeatDetails(1));
+    // const coords = this.corepeat.coordinates.split(';');
     var mapProp = {
-      center: new google.maps.LatLng(+coords[0], +coords[1]),
+      center: new LatLng(14, 14),
+      // center: new google.maps.LatLng(+coords[0], +coords[1]),
       zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: MapTypeId.ROADMAP
     };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    this.map = new Map(this.gmapElement.nativeElement, mapProp);
   }
 
   getCorepeatDetails() {
     const id: number = +this.route.snapshot.paramMap.get('id');
-    this.corepeatService.getCorepeatDetails(id).subscribe(corepeat => this.corepeat = corepeat);
+    this.corepeatService.getCorepeatDetails(id).subscribe(corepeat => {
+      console.log("hej");
+      console.log(corepeat);
+      this.corepeat = corepeat});
+    console.log(this.corepeat);
   }
 }

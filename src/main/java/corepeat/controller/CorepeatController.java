@@ -35,18 +35,21 @@ public class CorepeatController {
 
     @RequestMapping(value = "/corepeats", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String getCorepeats() {
         return this.corepeatService.getCorepeatsJSON();
     }
 
     @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
+    @CrossOrigin
     public String getCorepeatById(@PathVariable String id) {
         return this.corepeatService.getCorepeatJSON(new Integer(id));
     }
 
     @RequestMapping(value = "/corepeats/{userId}", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
+    @CrossOrigin
     public void addCorepeat(@RequestBody String corepeatBody, @PathVariable String userId, HttpServletResponse response) {
         Integer corepeatId = this.corepeatService.addCorepeatFromJSON(corepeatBody);
         this.userService.addUserToCorepeat(new Integer(userId), corepeatId);
