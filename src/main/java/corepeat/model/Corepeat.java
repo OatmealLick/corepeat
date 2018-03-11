@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "corepeatId")
 @Table(name = "COREPEAT",
@@ -61,7 +60,7 @@ public class Corepeat {
     @ManyToOne
     @JoinColumn(name = "MENTOR_ID")
     @JsonProperty("mentor")
-    @JsonManagedReference
+    @JsonBackReference
     private CorepeatUser mentor;
 
     public Integer getCorepeatId() {

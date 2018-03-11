@@ -8,5 +8,6 @@ public interface UserDAO {
 
     void addUser(CorepeatUser corepeatUser);
     CorepeatUser getUserById(Integer userId);
+    CorepeatUser getUserByEmail(String email);
     Stream<CorepeatUser> getUserStream();
 }

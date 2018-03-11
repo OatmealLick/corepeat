@@ -12,6 +12,7 @@ import java.util.Set;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "userId")
 @Table(name = "COREPEAT_USER",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"USER_ID"})})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CorepeatUser {
 
     @Id
@@ -52,12 +53,11 @@ public class CorepeatUser {
     Set<Corepeat> corepeats = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "mentor")
-    @JsonBackReference
+    @JsonManagedReference
     Set<Corepeat> mentoredCorepeats = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private AchievementProgress progress;
-
 
     public AchievementProgress getProgress() {
         return progress;

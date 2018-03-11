@@ -1,16 +1,13 @@
 package corepeat.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import corepeat.model.CorepeatUser;
+import corepeat.model.Login;
 import corepeat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -28,9 +25,25 @@ public class UserController {
     @ResponseBody
     @CrossOrigin
     public void addUser(@RequestBody String userBody, HttpServletResponse response) {
-
         this.userService.addUserFromJSON(userBody);
         response.setStatus(200);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseBody
+    public Integer loginUser(@RequestBody String loginBody, HttpServletResponse response) {
+        Login login = this.userService.createLoginFromJSON(loginBody);
+        response.setStatus(401);
+        if (login != null) {
+            CorepeatUser corepeatUser = this.userService.validateUser(login);
+            if (corepeatUser != null) {
+                if (login.getPassword().equals(new String(corepeatUser.getPasswordHash()))) {
+                    response.setStatus(200);
+                    return corepeatUser.getUserId();
+                }
+            }
+        }
+        return 0;
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
