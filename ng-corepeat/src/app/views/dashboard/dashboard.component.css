@@ -6,3 +6,22 @@
   flex: 50%;
   margin: 0 15px 0 15px;
 }
+
+.achievements ul {
+  list-style-type: none;
+  margin: 0 0 30px;
+  padding: 0;
+}
+
+.achievements ul li {
+  display: inline-block;
+  margin: 15px;
+  color: black;
+  font-size: 25px;
+}
+
+.achievement-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 20px;
+}

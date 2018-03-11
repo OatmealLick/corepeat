@@ -1,13 +1,21 @@
 <div class="page-header">
-  <h1 class="page-header-elem">{{loggedUser.name}} {{loggedUser.surname}}</h1>
-  <ul>
-    <li *ngFor="let achievement of achievements">{{achievement}}</li>
-  </ul>
+  <div class="page-header-elem">
+    <h1>{{loggedUser.name}} {{loggedUser.surname}}</h1>
+  </div>
   <div class="buttons">
     <button routerLink="/create" class="important-button" id="create-corepeat">
       <i class="icon fa fa-plus-circle" aria-hidden="true"></i>Utwórz Corepeata
     </button>
   </div>
+</div>
+
+<div class="achievements">
+  <ul>
+    <li *ngFor="let achievement of achievements.achievements">
+      <img class="achievement-icon" src="../../../assets/{{achievement | lowercase}}.png"/>
+      {{achievement}}
+    </li>
+  </ul>
 </div>
 
 <div class="dashboard">

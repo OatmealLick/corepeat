@@ -33,10 +33,11 @@ public class CorepeatController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/corepeats", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/corepeats", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
     @CrossOrigin
-    public String getCorepeats() {
+    public String getCorepeats(HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         return this.corepeatService.getCorepeatsJSON();
     }
 

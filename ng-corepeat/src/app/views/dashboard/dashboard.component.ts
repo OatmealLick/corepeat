@@ -23,7 +23,8 @@ export class DashboardComponent implements OnInit {
               private corepeatService: CorepeatService) { }
 
   ngOnInit() {
-    this.getLoggedUser()
+    this.getLoggedUser();
+    this.getUserAchievements();
   }
 
   getLoggedUser() {
