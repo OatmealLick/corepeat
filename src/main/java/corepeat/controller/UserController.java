@@ -32,6 +32,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public Integer loginUser(@RequestBody String loginBody, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         Login login = this.userService.createLoginFromJSON(loginBody);
         response.setStatus(401);
         if (login != null) {
@@ -49,14 +50,16 @@ public class UserController {
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public String getUserById(@PathVariable String id) {
+    public String getUserById(@PathVariable String id, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         return userService.getUserJSON(new Integer(id));
     }
 
     @RequestMapping(value = "/users/{id}/corepeats", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public String getCorepeatsWithUserOfId(@PathVariable String id) {
+    public String getCorepeatsWithUserOfId(@PathVariable String id, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         return userService.getCorepeatsWithUserOfId(new Integer(id));
     }
 

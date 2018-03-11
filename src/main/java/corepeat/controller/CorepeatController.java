@@ -44,7 +44,8 @@ public class CorepeatController {
     @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public String getCorepeatById(@PathVariable String id) {
+    public String getCorepeatById(@PathVariable String id, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         return this.corepeatService.getCorepeatJSON(new Integer(id));
     }
 
@@ -52,6 +53,7 @@ public class CorepeatController {
     @ResponseBody
     @CrossOrigin
     public void addCorepeat(@RequestBody String corepeatBody, @PathVariable String userId, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         Integer corepeatId = this.corepeatService.addCorepeatFromJSON(corepeatBody);
         this.userService.addUserToCorepeat(new Integer(userId), corepeatId);
         response.setStatus(200);

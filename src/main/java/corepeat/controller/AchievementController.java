@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,7 +60,8 @@ public class AchievementController {
     @RequestMapping(value = "/achievements/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @CrossOrigin
-    public String getAchievementsOfUser(@PathVariable String id) {
+    public String getAchievementsOfUser(@PathVariable String id, HttpServletResponse response) {
+        response.setCharacterEncoding("utf-8");
         return "{\"achievements\": " + new GsonBuilder().create().toJson(achievementService.getAchievementsOfUser(new Integer(id))) + " }";
     }
 
