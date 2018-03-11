@@ -22,9 +22,9 @@ export class CorepeatDetailedComponent implements OnInit {
 
   ngOnInit() {
     this.getCorepeatDetails();
-    console.log(this.corepeat);
+    const coords = this.corepeat.coordinates.split(';');
     var mapProp = {
-      center: new google.maps.LatLng(this.corepeat.latitude, this.corepeat.longtitude),
+      center: new google.maps.LatLng(+coords[0], +coords[1]),
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -33,8 +33,6 @@ export class CorepeatDetailedComponent implements OnInit {
 
   getCorepeatDetails() {
     const id: number = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.corepeatService.getCorepeatDetails(id).subscribe(corepeat => this.corepeat = corepeat);
-    console.log(this.corepeat);
   }
 }
