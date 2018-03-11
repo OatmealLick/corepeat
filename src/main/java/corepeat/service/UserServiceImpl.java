@@ -7,10 +7,12 @@ import corepeat.dao.CorepeatDAO;
 import corepeat.dao.UserDAO;
 import corepeat.model.Corepeat;
 import corepeat.model.CorepeatUser;
+import corepeat.model.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.rmi.runtime.Log;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
@@ -51,9 +53,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public String getUserJSON(Integer userId) {
         CorepeatUser corepeatUser = this.userDAO.getUserById(userId);
-       // System.out.println(corepeatUser.getCorepeats());
-       // System.out.println(corepeatUser.getMentoredCorepeats());
-
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new Hibernate5Module());
@@ -75,6 +74,25 @@ public class UserServiceImpl implements UserService {
         } catch (JsonProcessingException e) {
             return "redirect:error";
         }
+    }
+
+    @Override
+    @Transactional
+    public CorepeatUser validateUser(Login login) {
+        CorepeatUser corepeatUser = this.userDAO.getUserByEmail(login.getEmail());
+        return corepeatUser;
+    }
+
+    @Override
+    public Login createLoginFromJSON(String loginBody) {
+        ObjectMapper mapper = new ObjectMapper();
+        Login login = null;
+        try {
+            login = mapper.readValue(loginBody, Login.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return login;
     }
 
     @Override
