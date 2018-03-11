@@ -1,7 +1,6 @@
 # Coreapeat
 
 _Corepetitio est mater studiorum_
-_ktoś bardzo mądry, dawno temu_
 
 ## Po co mi Corepeat?
 **Corepeat** to platforma do organizowania wspólnej nauki i znajdowania pomocy dydaktycznej kiedy jej najbardziej potrzebujesz! Twórz i dołączaj do wydarzeń w Twojej okolicy i zapomnij o samotnej nauce!
