@@ -35,15 +35,19 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public void loginUser(@RequestBody String loginBody, HttpServletResponse response) {
+    public Integer loginUser(@RequestBody String loginBody, HttpServletResponse response) {
         Login login = this.userService.createLoginFromJSON(loginBody);
         response.setStatus(401);
         if (login != null) {
             CorepeatUser corepeatUser = this.userService.validateUser(login);
             if (corepeatUser != null) {
-                if (login.getPassword().equals(new String(corepeatUser.getPasswordHash()))) response.setStatus(200);
+                if (login.getPassword().equals(new String(corepeatUser.getPasswordHash()))) {
+                    response.setStatus(200);
+                    return corepeatUser.getUserId();
+                }
             }
         }
+        return 0;
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")

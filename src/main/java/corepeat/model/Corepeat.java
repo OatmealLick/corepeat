@@ -61,7 +61,7 @@ public class Corepeat {
     @ManyToOne
     @JoinColumn(name = "MENTOR_ID")
     @JsonProperty("mentor")
-    @JsonManagedReference
+    @JsonBackReference
     private CorepeatUser mentor;
 
     public Integer getCorepeatId() {
