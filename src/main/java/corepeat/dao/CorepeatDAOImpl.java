@@ -46,4 +46,3 @@ public class CorepeatDAOImpl implements CorepeatDAO {
         return corepeats;
     }
 }
-git ad

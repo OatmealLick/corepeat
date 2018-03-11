@@ -15,9 +15,8 @@
   padding: 0;
 }
 
-#create-corepeat {
+.important-button {
   border: none;
-  background: #1bd017;
   color: #fff;
   font-weight: bold;
   padding: 20px;
@@ -31,7 +30,15 @@
   transition: all 0.3s;
 }
 
-#create-corepeat:hover {
+#create-corepeat {
+  background: #1bd017;
+}
+
+#join {
+  background: #339946;
+}
+
+.important-button:hover {
   transform: scale(1.25, 1.25);
 }
 

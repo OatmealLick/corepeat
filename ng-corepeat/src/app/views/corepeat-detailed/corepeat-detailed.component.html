@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1 class="page-header-elem">{{corepeat.name}}</h1>
+  <div class="buttons">
+    <button class="important-button" id="join">
+      <i class="icon fa fa-user-plus" aria-hidden="true"></i>Biorę udział!
+    </button>
+    <button routerLink="/create" class="important-button" id="create-corepeat">
+      <i class="icon fa fa-plus-circle" aria-hidden="true"></i>Utwórz Corepeata
+    </button>
+  </div>
+</div>
+
+<div class="map" #gmap></div>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="corepeat-info col-8">
+      <h2>Opis wydarzenia</h2>
+      <p>{{corepeat.description}}</p>
+    </div>
+
+    <div class="corepeat-users col-4">
+      <h2>Uczestnicy</h2>
+      <ul>
+        <li *ngFor="let participant of corepeat.participants">
+          <a routerLink="/users/{{participant.id}}">
+            <i class="icon-extended fa fa-user fa-lg" aria-hidden="true"></i>{{participant.name}} {{participant.surname}}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
