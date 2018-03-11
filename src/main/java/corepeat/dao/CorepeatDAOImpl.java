@@ -1,5 +1,7 @@
 package corepeat.dao;
 
+import corepeat.geocode.GoogleGeoCode;
+import corepeat.geocode.GoogleUtil;
 import corepeat.model.Corepeat;
 import corepeat.model.CorepeatUser;
 import org.hibernate.Session;
@@ -24,6 +26,12 @@ public class CorepeatDAOImpl implements CorepeatDAO {
     @Override
     public void addCorepeat(Corepeat corepeat) {
         Session session = this.sessionFactory.getCurrentSession();
+        String address = corepeat.getCity();
+        GoogleUtil googleUtil = new GoogleUtil();
+        GoogleGeoCode googleGeoCode = googleUtil.getGeoCode(address, true);
+        String coordinates = googleGeoCode.getResults()[0].getGeometry().getLocation().getLat() + ";" +
+                googleGeoCode.getResults()[0].getGeometry().getLocation().getLng();
+        corepeat.setCoordinates(coordinates);
         session.save(corepeat);
     }
 
