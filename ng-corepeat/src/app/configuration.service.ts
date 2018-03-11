@@ -6,7 +6,7 @@ export class ConfigurationService {
   constructor() { }
 
   getUrl(): string {
-    return this.getAppUrl();
+    return this.getMockUrl();
   }
 
   private getAppUrl(): string {

@@ -18,6 +18,7 @@ import { CorepeatListComponent } from './corepeat/corepeat-list/corepeat-list.co
 import {AuthService} from "./auth.service";
 import { ContactComponent } from './views/contact/contact.component';
 import { CorepeatSummaryComponent } from './corepeat/corepeat-summary/corepeat-summary.component';
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 
 @NgModule({
@@ -36,8 +37,7 @@ import { CorepeatSummaryComponent } from './corepeat/corepeat-summary/corepeat-s
     HttpClientModule,
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
+      InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [
     CorepeatService,
