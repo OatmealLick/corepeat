@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {UserDetailedComponent} from "./user/user-detailed/user-detailed.component";
-import {CorepeatDetailedComponent} from "./corepeat/corepeat-detailed/corepeat-detailed.component";
+import {CorepeatDetailedComponent} from "./views/corepeat-detailed/corepeat-detailed.component";
 import {NearbyCorepeatsComponent} from "./views/nearby-corepeats/nearby-corepeats.component";
 import {DashboardComponent} from "./views/dashboard/dashboard.component";
 import {ContactComponent} from "./views/contact/contact.component";

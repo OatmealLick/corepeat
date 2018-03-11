@@ -1,8 +1,10 @@
 <div class="page-header">
   <h1 class="page-header-elem">Corepeaty w Twojej okolicy</h1>
-  <button class="page-header-elem" id="create-corepeat">
-    <i class="icon fa fa-plus-circle" aria-hidden="true"></i>Utwórz Corepeata
-  </button>
+  <div class="buttons">
+    <button routerLink="/create" class="important-button" id="create-corepeat">
+      <i class="icon fa fa-plus-circle" aria-hidden="true"></i>Utwórz Corepeata
+    </button>
+  </div>
 </div>
 
 <app-corepeat-list [timeSelector]="timeSelectorType.NO_SELECTION"></app-corepeat-list>

@@ -29,7 +29,9 @@ export class CorepeatListComponent implements OnInit {
 
     if (this.timeSelector === TimeSelector.NO_SELECTION) {
       console.log('Fetching nearby corepeats');
-      this.corepeatService.getNearbyCorepeats().subscribe(corepeats => this.corepeats = corepeats);
+      this.corepeatService.getNearbyCorepeats()
+        .subscribe(corepeats => this.corepeats = corepeats
+        .filter(corepeat => corepeat.corepeatId !== undefined));
     }
     else {
       this.userService.getCorepeatsOfUser(userId).subscribe(corepeats => {

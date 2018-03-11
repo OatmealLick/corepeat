@@ -13,7 +13,9 @@ export class CorepeatService {
               private http: HttpClient) { }
 
   getCorepeatDetails(id: number): Observable<Corepeat> {
-    return this.http.get<Corepeat>(`${this.configuration.getUrl()}/${this.corepeatsPath}/${id}`);
+    const url: string = `${this.configuration.getUrl()}/${this.corepeatsPath}/${id}`;
+    console.log(`Fetching from ${url}`);
+    return this.http.get<Corepeat>(url);
   }
 
   createCorepeat(corepeat: Corepeat) {
