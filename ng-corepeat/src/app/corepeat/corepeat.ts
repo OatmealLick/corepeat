@@ -1,12 +1,11 @@
 import {User} from "../user/user";
 
 export class Corepeat {
-  id: number;
+  corepeatId: number;
   name: string;
   city: string;
   date: Date;
-  latitude: number;
-  longtitude: number;
+  coordinates: string;
   description: string;
   maxParticipants: number;
   maxMentors: number;

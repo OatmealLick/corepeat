@@ -20,3 +20,10 @@ ul li:hover {
   background: rgba(238, 152, 77, 0.64);
   cursor: pointer;
 }
+
+ul li a,
+ul li a:hover {
+  text-decoration: none;
+  color: black;
+
+}
