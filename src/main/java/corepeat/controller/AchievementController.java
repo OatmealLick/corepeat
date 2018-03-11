@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import corepeat.model.CorepeatUser;
 import corepeat.service.AchievementService;
 import corepeat.service.CorepeatService;
@@ -11,10 +13,7 @@ import corepeat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -56,5 +55,13 @@ public class AchievementController {
         achievementService.grantBaseProgress();
         return "done";
     }
+
+    @RequestMapping(value = "/achievements/{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    @CrossOrigin
+    public String getAchievementsOfUser(@PathVariable String id) {
+        return new GsonBuilder().create().toJson(achievementService.getAchievementsOfUser(new Integer(id)));
+    }
+
 
 }
