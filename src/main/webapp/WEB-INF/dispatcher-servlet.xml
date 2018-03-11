@@ -32,7 +32,8 @@
 			<list>
 				<value>corepeat.model.CorepeatUser</value>
 				<value>corepeat.model.Corepeat</value>
-			</list>
+                <value>corepeat.model.AchievementProgress</value>
+            </list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
@@ -51,13 +52,22 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 
+    <bean id="achievementDAO" class="corepeat.dao.AchievementDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+
     <bean id="userService" class="corepeat.service.UserServiceImpl">
-        <property name="userDAO" ref="userDAO"></property>
+        <property name="userDAO" ref="userDAO"/>
     </bean>
 
     <bean id="corepeatService" class="corepeat.service.CorepeatServiceImpl">
-        <property name="corepeatDAO" ref="corepeatDAO"></property>
+        <property name="corepeatDAO" ref="corepeatDAO"/>
     </bean>
+
+    <bean id="achievementService" class="corepeat.service.AchievementServiceImpl">
+        <property name="achievementDAO" ref="achievementDAO"/>
+    </bean>
+
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
