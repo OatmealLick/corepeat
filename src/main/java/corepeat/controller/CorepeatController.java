@@ -41,7 +41,7 @@ public class CorepeatController {
         return this.corepeatService.getCorepeatsJSON();
     }
 
-    @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/corepeats/{id}", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
     @CrossOrigin
     public String getCorepeatById(@PathVariable String id, HttpServletResponse response) {

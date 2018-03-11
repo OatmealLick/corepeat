@@ -47,7 +47,7 @@ public class UserController {
         return 0;
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
     @CrossOrigin
     public String getUserById(@PathVariable String id, HttpServletResponse response) {
@@ -55,7 +55,7 @@ public class UserController {
         return userService.getUserJSON(new Integer(id));
     }
 
-    @RequestMapping(value = "/users/{id}/corepeats", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/users/{id}/corepeats", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     @ResponseBody
     @CrossOrigin
     public String getCorepeatsWithUserOfId(@PathVariable String id, HttpServletResponse response) {
