@@ -38,6 +38,22 @@
   background: #339946;
 }
 
+#submit {
+  background: #339946;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+#submit:hover {
+  background: #46de60;
+  cursor: pointer;
+}
+
 .important-button:hover {
   transform: scale(1.25, 1.25);
 }

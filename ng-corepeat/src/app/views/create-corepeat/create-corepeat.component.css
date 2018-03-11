@@ -1,0 +1,21 @@
+.first-col {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.last-col {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+.container-fluid {
+  font-size: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}

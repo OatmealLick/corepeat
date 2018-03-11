@@ -17,6 +17,8 @@ import {AuthService} from "./auth.service";
 import { ContactComponent } from './views/contact/contact.component';
 import { CorepeatSummaryComponent } from './corepeat/corepeat-summary/corepeat-summary.component';
 import { CreateCorepeatComponent } from './views/create-corepeat/create-corepeat.component';
+import {FormsModule} from "@angular/forms";
+import {AchievementService} from "./achievement.service";
 
 
 @NgModule({
@@ -34,13 +36,15 @@ import { CreateCorepeatComponent } from './views/create-corepeat/create-corepeat
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     CorepeatService,
     UserService,
     ConfigurationService,
-    AuthService
+    AuthService,
+    AchievementService
   ],
   bootstrap: [AppComponent]
 })
